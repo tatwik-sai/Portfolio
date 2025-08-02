@@ -16,9 +16,23 @@ import {
   Transition,
   type VariantLabels,
   type Target,
-  type AnimationControls,
   type TargetAndTransition,
 } from "framer-motion";
+
+// Temporary type declaration for Intl.Segmenter if not present
+declare global {
+  interface Intl {
+    Segmenter?: typeof IntlSegmenter;
+  }
+  // Add a minimal type for IntlSegmenter if not present
+  var IntlSegmenter: {
+    prototype: IntlSegmenter;
+    new (locales?: string | string[], options?: { granularity?: string }): IntlSegmenter;
+  };
+  interface IntlSegmenter {
+    segment(input: string): Iterable<{ segment: string }>;
+  }
+}
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -39,7 +53,7 @@ export interface RotatingTextProps
   texts: string[];
   transition?: Transition;
   initial?: boolean | Target | VariantLabels;
-  animate?: boolean | VariantLabels | AnimationControls | TargetAndTransition;
+  animate?: boolean | VariantLabels | TargetAndTransition;
   exit?: Target | VariantLabels;
   animatePresenceMode?: "sync" | "wait";
   animatePresenceInitial?: boolean;
@@ -82,11 +96,11 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
     const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
 
     const splitIntoCharacters = (text: string): string[] => {
-      if (typeof Intl !== "undefined" && Intl.Segmenter) {
-        const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+      if (typeof Intl !== "undefined" && (Intl as any).Segmenter) {
+        const segmenter = new (Intl as any).Segmenter("en", { granularity: "grapheme" });
         return Array.from(
           segmenter.segment(text),
-          (segment) => segment.segment,
+          (segment: { segment: string }) => segment.segment,
         );
       }
       return Array.from(text);
