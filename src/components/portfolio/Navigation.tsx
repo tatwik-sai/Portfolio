@@ -49,7 +49,7 @@ const Navigation = () => {
             onClick={() => scrollToSection('#')}
           >
             <span className={'text-white'}>
-              Tatwik
+              Tatwik Sai
             </span>
           </div>
 
