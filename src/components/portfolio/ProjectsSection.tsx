@@ -14,6 +14,29 @@ const ProjectsSection = () => {
       demo: "https://ghost-socket.vercel.app/"
     },
     {
+      name: "Trust RAG",
+      description: "A Retrieval-Augmented Generation system for querying Rust programming documentation. The system retrieves relevant documentation chunks and generates accurate answers using vector similarity search and optional LLM backends.",
+      tech: ["Python", "RAG", "FAISS", "LLM"],
+      image: "/rag.webp",
+      github: "https://github.com/tatwik-sai/Trust-RAG",
+    },
+    {
+      name: "Trip Vault",
+      description: "TripVault is a collaborative trip management platform that lets groups plan itineraries, split expenses, share memories, and coordinate activities in real time—all in one place.",
+      tech: ["NextJs", "Node.js", "Python", "MongoDB", "Express", "Sockets"],
+      image: "/tripvault.png",
+      github: "https://github.com/tatwik-sai/TripVault",
+      // demo: "https://ghost-socket.vercel.app/"
+    },
+    {
+      name: "HTTP Server",
+      description: "An async HTTP/1.1 server in Rust using Tokio, achieving 8,000+ req/s on a single node via non-blocking I/O and a modular middleware pipeline.",
+      tech: ["Rust", "Async", "Tokio", "Threading", "Express"],
+      image: "/httpserver.webp",
+      github: "https://github.com/tatwik-sai/HTTP-Server",
+      // demo: "https://ghost-socket.vercel.app/"
+    },
+    {
       name: "BookNest",
       description: "BookNest is a simple, user friendly Library Management System that allows admins to manage books and users to browse, borrow, and interact with a built in virtual assistant.",
       tech: ["Python", "OpenAI API", "Tkinter", "Matplotlib"],
@@ -98,14 +121,14 @@ const ProjectsSection = () => {
                     <Github className="h-4 w-4 mr-2 text-gray-400 group-hover:text-white transition-colors" />
                     Code
                   </Button>
-                  <Button
+                  {project.demo && <Button
                     size="sm"
                     className="flex-1 cursor-pointer bg-blue-600 text-white hover:bg-blue-600"
                     onClick={() => window.open(project.demo, "_blank")}
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Demo
-                  </Button>
+                  </Button>}
                 </div>
               </CardContent>
             </Card>

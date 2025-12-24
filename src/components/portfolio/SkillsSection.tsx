@@ -4,19 +4,21 @@ import { FaReact } from "react-icons/fa";
 import { FaNodeJs } from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { SiMongodb } from "react-icons/si";
-import { FaGitAlt } from "react-icons/fa6";
+import { FaGitAlt, FaRust } from "react-icons/fa6";
 import { FaDocker } from "react-icons/fa6";
 import { FaLinux } from "react-icons/fa6";
 import { IoLogoFirebase } from "react-icons/io5";
 import { SiSolidity } from "react-icons/si";
 import { RiNextjsLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
+import { color } from "framer-motion";
 
 
 
 const SkillsSection = () => {
   const skills = [
     { name: "Python", icon: FaPython, color: "text-blue-600" },
+    {name: "Rust", icon: FaRust, color: "text-gray-400"},
     { name: "React", icon: FaReact, color: "text-blue-600" },
     { name: "NextJs", icon: RiNextjsLine, color: "text-gray-400" },
     { name: "Node.js", icon: FaNodeJs, color: "text-green-500" },
